@@ -1,0 +1,29 @@
+{
+    "Badminton": {
+        "checkpoints": [
+            {
+                "steps": 17024,
+                "file_path": "results\\BadMinton\\Badminton\\Badminton-17024.onnx",
+                "reward": null,
+                "creation_time": 1747174120.4451125,
+                "auxillary_file_paths": [
+                    "results\\BadMinton\\Badminton\\Badminton-17024.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 17024,
+            "file_path": "results\\BadMinton\\Badminton.onnx",
+            "reward": null,
+            "creation_time": 1747174120.4451125,
+            "auxillary_file_paths": [
+                "results\\BadMinton\\Badminton\\Badminton-17024.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.2.0.dev0",
+        "torch_version": "2.7.0+cpu"
+    }
+}
