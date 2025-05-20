@@ -2,22 +2,22 @@
     "Badminton": {
         "checkpoints": [
             {
-                "steps": 17024,
-                "file_path": "results\\BadMinton\\Badminton\\Badminton-17024.onnx",
+                "steps": 59840,
+                "file_path": "results\\Badminton\\Badminton\\Badminton-59840.onnx",
                 "reward": null,
-                "creation_time": 1747174120.4451125,
+                "creation_time": 1747770965.6167445,
                 "auxillary_file_paths": [
-                    "results\\BadMinton\\Badminton\\Badminton-17024.pt"
+                    "results\\Badminton\\Badminton\\Badminton-59840.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 17024,
-            "file_path": "results\\BadMinton\\Badminton.onnx",
+            "steps": 59840,
+            "file_path": "results\\Badminton\\Badminton.onnx",
             "reward": null,
-            "creation_time": 1747174120.4451125,
+            "creation_time": 1747770965.6167445,
             "auxillary_file_paths": [
-                "results\\BadMinton\\Badminton\\Badminton-17024.pt"
+                "results\\Badminton\\Badminton\\Badminton-59840.pt"
             ]
         }
     },

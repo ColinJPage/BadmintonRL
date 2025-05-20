@@ -8,6 +8,10 @@ public class BadmintonAgent : Agent
     [SerializeField] Mintoner mintoner;
     [SerializeField] Birdie birdie;
     [SerializeField] float birdieRandomRadius = 10f;
+    [SerializeField] float birdieServeSpeed = 5f;
+    [SerializeField] float birdieServeAngle = 50f;
+
+    private Vector3 agentStartPos;
 
     Transform courtT => transform.parent;
     protected override void Awake()
@@ -20,13 +24,19 @@ public class BadmintonAgent : Agent
             requester.DecisionStep = Random.Range(0, requester.DecisionPeriod);
         }
     }
+    private void Start()
+    {
+        agentStartPos = mintoner.rb.position;
+        
+    }
     public override void OnEpisodeBegin()
     {
         base.OnEpisodeBegin();
-        mintoner.rb.MovePosition(courtT.position);
+        //mintoner.rb.MovePosition(agentStartPos);
         mintoner.rb.linearVelocity = Vector3.zero;
         mintoner.SetMoveInput(Vector2.zero);
-        birdie.rb.MovePosition(courtT.position + Random.insideUnitCircle.HorizontalV2toV3().normalized * birdieRandomRadius);
+        birdie.rb.AddForce(Vector3.RotateTowards(Vector3.back * birdieServeSpeed, Vector3.up, birdieServeAngle*Mathf.Deg2Rad, 0f), ForceMode.VelocityChange);
+        //birdie.rb.MovePosition(courtT.position + Random.insideUnitCircle.HorizontalV2toV3().normalized * birdieRandomRadius);
     }
     public override void CollectObservations(VectorSensor sensor)
     {
