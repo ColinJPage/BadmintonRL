@@ -4,6 +4,7 @@ public class MintonerOpponentBrain : MonoBehaviour
 {
     private Mintoner mintoner;
     private Birdie birdie;
+    [SerializeField] Transform seekT;
 
     private void Awake()
     {
@@ -12,7 +13,20 @@ public class MintonerOpponentBrain : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        var toBirdie = birdie.transform.position - mintoner.transform.position;
-        mintoner?.SetMoveInput(toBirdie.Flatten().ToHorizontalV2());
+        var intendedOffsetFromBirdie = transform.forward;
+        var targetPos = seekT.position - intendedOffsetFromBirdie;
+        var toTarget = targetPos - mintoner.transform.position;
+        mintoner?.SetMoveInput(toTarget.Flatten().ToHorizontalV2());
     }
+    //Vector3 PredictLandingPos(Rigidbody rb)
+    //{
+    //    Vector3 simPos = rb.position;
+    //    Vector3 simVelocity = rb.linearVelocity;
+    //    float deltaTime = Time.fixedDeltaTime;
+    //    while (true)
+    //    {
+    //        //simVelocity
+    //    }
+    //    return simPos;
+    //}
 }

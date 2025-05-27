@@ -52,6 +52,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 570c1a8e965f65d4c95cbcd52de11bdc, type: 2}
+    - target: {fileID: 7470810390626735578, guid: eabe0c4d33047d740a028974dc168d4c, type: 3}
+      propertyPath: m_Drag
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9190118217505575529, guid: eabe0c4d33047d740a028974dc168d4c, type: 3}
+      propertyPath: maxAcceleration
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 9221465343037105768, guid: eabe0c4d33047d740a028974dc168d4c, type: 3}
       propertyPath: m_Name
       value: P_MintonerOpponent
@@ -81,3 +89,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0653f60b0a1410244b7315a5e14cfd49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seekT: {fileID: 0}

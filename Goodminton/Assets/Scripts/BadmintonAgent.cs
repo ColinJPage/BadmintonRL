@@ -10,6 +10,7 @@ public class BadmintonAgent : Agent
     [SerializeField] float birdieRandomRadius = 10f;
     [SerializeField] float birdieServeSpeed = 5f;
     [SerializeField] float birdieServeAngle = 50f;
+    [SerializeField] float livingRewardPerSec = 1f;
 
     private Vector3 agentStartPos;
 
@@ -26,16 +27,20 @@ public class BadmintonAgent : Agent
     }
     private void Start()
     {
-        agentStartPos = mintoner.rb.position;
+        agentStartPos = mintoner.rb ? mintoner.rb.position : mintoner.transform.position;
         
     }
     public override void OnEpisodeBegin()
     {
         base.OnEpisodeBegin();
         //mintoner.rb.MovePosition(agentStartPos);
-        mintoner.rb.linearVelocity = Vector3.zero;
-        mintoner.SetMoveInput(Vector2.zero);
-        birdie.rb.AddForce(Vector3.RotateTowards(Vector3.back * birdieServeSpeed, Vector3.up, birdieServeAngle*Mathf.Deg2Rad, 0f), ForceMode.VelocityChange);
+        foreach(var r in transform.parent.GetComponentsInChildren<IResettable>())
+        {
+            r.OnEpisodeBegin();
+        }
+        var serveDir = Vector3.RotateTowards(Vector3.back * birdieServeSpeed, Vector3.up, birdieServeAngle * Mathf.Deg2Rad, 0f);
+        serveDir = Quaternion.Euler(0f, Random.Range(-1f, 1f) * 45f, 0f) * serveDir;
+        birdie.rb.AddForce(serveDir, ForceMode.VelocityChange);
         //birdie.rb.MovePosition(courtT.position + Random.insideUnitCircle.HorizontalV2toV3().normalized * birdieRandomRadius);
     }
     public override void CollectObservations(VectorSensor sensor)
@@ -62,13 +67,39 @@ public class BadmintonAgent : Agent
         //    EndEpisode();
         //    return;
         //}
-        var toBirdie = birdie.rb.position - mintoner.rb.position;
-        AddReward(birdieRandomRadius - toBirdie.magnitude);
+        
 
+       
+    }
+    private void FixedUpdate()
+    {
         // Fell off platform lol
-        if(mintoner.rb.position.y < courtT.position.y-1f)
+        if (mintoner.rb.position.y < courtT.position.y - 1f)
         {
             EndEpisode();
+            return;
+        }
+
+        var birdPos = birdie.rb.position;
+        // fault
+        if(birdPos.y < transform.position.y + 0.35f)
+        {
+            // True if birdie landed on opponent's side, false otherwise
+            bool agentsPoint = birdie.transform.parent.InverseTransformPoint(birdie.rb.position).z > 0f;
+            if (agentsPoint)
+            {
+                AddReward(100f); // we won!
+            }
+            else
+            {
+                var toBirdie = birdie.rb.position - mintoner.rb.position;
+                AddReward(birdieRandomRadius - toBirdie.magnitude);
+            }
+            EndEpisode();
+        }
+        else
+        {
+            AddReward(livingRewardPerSec * Time.fixedDeltaTime);
         }
     }
     public override void Heuristic(in ActionBuffers actionsOut)
