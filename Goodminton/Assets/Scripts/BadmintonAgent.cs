@@ -12,6 +12,8 @@ public class BadmintonAgent : Agent
     [SerializeField] float birdieServeAngle = 50f;
     [SerializeField] float livingRewardPerSec = 1f;
 
+    private MintonerHeuristic heuristic;
+
     private Vector3 agentStartPos;
 
     Transform courtT => transform.parent;
@@ -24,6 +26,7 @@ public class BadmintonAgent : Agent
         {
             requester.DecisionStep = Random.Range(0, requester.DecisionPeriod);
         }
+        heuristic = GetComponent<MintonerHeuristic>();
     }
     private void Start()
     {
@@ -57,8 +60,8 @@ public class BadmintonAgent : Agent
 
         var moveInput = new Vector2(actions.ContinuousActions[0], actions.ContinuousActions[1]);
         moveInput = Vector2.ClampMagnitude(moveInput, 1f);
-        //mintoner.SetMoveInput(moveInput);
-        mintoner.rb.AddForce(moveInput.HorizontalV2toV3() * mintoner.MaxAcceleartion, ForceMode.Acceleration);
+        mintoner.SetMoveInput(moveInput);
+        //mintoner.rb.AddForce(moveInput.HorizontalV2toV3() * mintoner.MaxAcceleartion, ForceMode.Acceleration);
 
         // Near the birdie
         //if(Vector3.Distance(mintoner.rb.position, birdie.rb.position) < 1.3f)
@@ -104,9 +107,6 @@ public class BadmintonAgent : Agent
     }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        var continuousActionsOut = actionsOut.ContinuousActions;
-        var moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        continuousActionsOut[0] = moveInput.x;
-        continuousActionsOut[1] = moveInput.y;
+        heuristic.Heuristic(actionsOut);
     }
 }

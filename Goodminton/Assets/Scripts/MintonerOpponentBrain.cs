@@ -16,7 +16,7 @@ public class MintonerOpponentBrain : MonoBehaviour
         var intendedOffsetFromBirdie = transform.forward;
         var targetPos = seekT.position - intendedOffsetFromBirdie;
         var toTarget = targetPos - mintoner.transform.position;
-        mintoner?.SetMoveInput(toTarget.Flatten().ToHorizontalV2());
+        mintoner?.SetMoveInput(transform.InverseTransformDirection(toTarget).Flatten().ToHorizontalV2());
     }
     //Vector3 PredictLandingPos(Rigidbody rb)
     //{

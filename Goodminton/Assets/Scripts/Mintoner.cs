@@ -4,6 +4,7 @@ public class Mintoner : MonoBehaviour, IResettable
 {
     [SerializeField] float maxAcceleration = 5f;
     public float MaxAcceleartion => maxAcceleration;
+    [SerializeField] float maxSpeed = 10f;
     public Rigidbody rb
     {
         get
@@ -25,7 +26,11 @@ public class Mintoner : MonoBehaviour, IResettable
     }
     private void FixedUpdate()
     {
-        rb.AddForce(moveInput.HorizontalV2toV3() * maxAcceleration, ForceMode.Acceleration);
+        var goalVelocity = maxAcceleration * transform.TransformDirection(moveInput.HorizontalV2toV3());
+        var desiredVelocityChange = goalVelocity - rb.linearVelocity;
+        var velocityChange = Vector3.ClampMagnitude(desiredVelocityChange.normalized*maxAcceleration * Time.fixedDeltaTime, desiredVelocityChange.magnitude);
+        rb.AddForce(velocityChange, ForceMode.VelocityChange);
+        rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, maxSpeed);
     }
 
     public void OnEpisodeBegin()
