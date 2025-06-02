@@ -355,7 +355,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: aa1d01df88b703f44998f44d618bbf98, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 9cc39dc7a06a68c41983d5f07ee63de3, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Badminton
@@ -1233,23 +1233,23 @@ PrefabInstance:
       objectReference: {fileID: 13400000, guid: 8666b1d0c77fc1446bba928873678c67, type: 2}
     - target: {fileID: 3389762198566932715, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_Positions.Array.data[0].x
-      value: -23.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3389762198566932715, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_Positions.Array.data[1].x
-      value: -23.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3389762198566932715, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_Positions.Array.data[2].x
-      value: -23.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3389762198566932715, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_Positions.Array.data[3].x
-      value: -23.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3389762198566932715, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_Positions.Array.data[4].x
-      value: -23.6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

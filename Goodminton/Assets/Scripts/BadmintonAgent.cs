@@ -85,7 +85,7 @@ public class BadmintonAgent : Agent
 
         var birdPos = birdie.rb.position;
         // fault
-        if(birdPos.y < transform.position.y + 0.35f)
+        if(birdPos.y < transform.position.y + 0.25f)
         {
             // True if birdie landed on opponent's side, false otherwise
             bool agentsPoint = birdie.transform.parent.InverseTransformPoint(birdie.rb.position).z > 0f;
