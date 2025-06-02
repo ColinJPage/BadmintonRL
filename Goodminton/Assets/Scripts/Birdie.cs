@@ -18,7 +18,7 @@ public class Birdie : MonoBehaviour, IResettable
         startPos = rb.position;
         rb.maxLinearVelocity = maxSpeed;
     }
-    void OnCollisionEnter(Collision collision)
+    /*void OnCollisionEnter(Collision collision)
     {
         // apply some random extra impulse when bouncing
         var impulse = collision.contacts[0].impulse;
@@ -26,5 +26,5 @@ public class Birdie : MonoBehaviour, IResettable
         randomDir.y = Mathf.Abs(randomDir.y);
         rb.AddForce(Quaternion.Euler(randomDir) * impulse * 0.1f, ForceMode.Impulse);
         //rb.AddForce()
-    }
+    }*/
 }
