@@ -20,13 +20,17 @@ public class Mintoner : MonoBehaviour, IResettable
     {
         startPos = rb.position;
     }
+    /// <summary>
+    /// In local space
+    /// </summary>
+    /// <param name="moveInput"></param>
     public void SetMoveInput(Vector2 moveInput)
     {
         this.moveInput = moveInput;
     }
     private void FixedUpdate()
     {
-        var goalVelocity = maxAcceleration * transform.TransformDirection(moveInput.HorizontalV2toV3());
+        var goalVelocity = maxAcceleration * transform.TransformDirection(moveInput.HorizontalV2toV3()); // Colin: maxAcceleartion should be maxSpeed! But we already trained so I'm not gonna fix it teehee
         var desiredVelocityChange = goalVelocity - rb.linearVelocity;
         var velocityChange = Vector3.ClampMagnitude(desiredVelocityChange.normalized*maxAcceleration * Time.fixedDeltaTime, desiredVelocityChange.magnitude);
         rb.AddForce(velocityChange, ForceMode.VelocityChange);

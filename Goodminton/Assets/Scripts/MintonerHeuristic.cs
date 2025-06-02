@@ -8,6 +8,7 @@ using Unity.MLAgents.Actuators;
 public class MintonerHeuristic : MonoBehaviour
 {
     [SerializeField] InputActionAsset inputActions;
+    [SerializeField] Mintoner mintoner;
 
     private Vector2 moveInput;
     private void OnEnable()
@@ -24,6 +25,8 @@ public class MintonerHeuristic : MonoBehaviour
     void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        moveInput = (Quaternion.Euler(0f, Vector3.SignedAngle(transform.forward, Camera.main.transform.forward, Vector3.up), 0f) * moveInput.HorizontalV2toV3()).ToHorizontalV2();
+        mintoner?.SetMoveInput(moveInput);
     }
     public void Heuristic(in ActionBuffers actionsOut)
     {

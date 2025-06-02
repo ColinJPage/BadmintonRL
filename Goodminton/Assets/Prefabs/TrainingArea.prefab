@@ -355,7 +355,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 9cc39dc7a06a68c41983d5f07ee63de3, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 8a753f9b8f24c3e4f9fc16fa78125d72, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Badminton
