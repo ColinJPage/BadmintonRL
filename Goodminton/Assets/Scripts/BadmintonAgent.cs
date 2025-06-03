@@ -12,6 +12,9 @@ public class BadmintonAgent : Agent
     [SerializeField] float birdieServeAngle = 50f;
     [SerializeField] float livingRewardPerSec = 1f;
 
+    [SerializeField] IntReference agentScore;
+    [SerializeField] IntReference opponentScore;
+
     private MintonerHeuristic heuristic;
 
     private Vector3 agentStartPos;
@@ -20,6 +23,8 @@ public class BadmintonAgent : Agent
     protected override void Awake()
     {
         base.Awake();
+        agentScore.Value = 0;
+        opponentScore.Value = 0;
         //Randomize decision offset
         var requester = GetComponent<DecisionRequester>();
         if (requester)
@@ -92,11 +97,13 @@ public class BadmintonAgent : Agent
             if (agentsPoint)
             {
                 AddReward(100f); // we won!
+                agentScore.Value++;
             }
             else
             {
                 var toBirdie = birdie.rb.position - mintoner.rb.position;
                 AddReward(birdieRandomRadius - toBirdie.magnitude);
+                opponentScore.Value++;
             }
             EndEpisode();
         }
@@ -108,5 +115,10 @@ public class BadmintonAgent : Agent
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         heuristic.Heuristic(actionsOut);
+    }
+
+    private void OnDestroy()
+    {
+        EndEpisode();
     }
 }

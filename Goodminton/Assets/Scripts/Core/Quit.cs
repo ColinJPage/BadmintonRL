@@ -6,6 +6,14 @@ public class Quit : MonoBehaviour
 {
     public void QuitGame()
     {
-        Application.Quit();
+        if(Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            Screen.fullScreen = false;
+        }
+        else
+        {
+            Application.Quit();
+
+        }
     }
 }

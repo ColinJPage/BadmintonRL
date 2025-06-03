@@ -8,6 +8,7 @@ public class Birdie : MonoBehaviour, IResettable
 
     public void OnEpisodeBegin()
     {
+        rb = GetComponent<Rigidbody>();
         rb.position = startPos;
         rb.linearVelocity = Vector3.zero;
     }
