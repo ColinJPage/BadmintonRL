@@ -366,7 +366,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 8a753f9b8f24c3e4f9fc16fa78125d72, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 168464770ff369f42862689fb465e3f6, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Badminton
@@ -1244,7 +1244,7 @@ PrefabInstance:
       objectReference: {fileID: 13400000, guid: 8666b1d0c77fc1446bba928873678c67, type: 2}
     - target: {fileID: 3389762198566932715, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_Positions.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3389762198566932715, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_Positions.Array.data[0].x
@@ -1260,15 +1260,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3389762198566932715, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_Positions.Array.data[3].x
-      value: 0.19000006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3389762198566932715, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_Positions.Array.data[3].y
-      value: 0.45032245
+      value: 0.7091203
       objectReference: {fileID: 0}
     - target: {fileID: 3389762198566932715, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_Positions.Array.data[3].z
-      value: 3.8288417
+      value: 3.61
       objectReference: {fileID: 0}
     - target: {fileID: 3389762198566932715, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_Positions.Array.data[4].x
@@ -1276,27 +1276,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5193669156415098933, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.19000006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5193669156415098933, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7296775
+      value: -1.18
       objectReference: {fileID: 0}
     - target: {fileID: 5193669156415098933, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.21884179
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5193669156415098933, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.53024346
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5193669156415098933, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.76840377
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5193669156415098933, guid: 166d561db70d08f4c92c48282891018e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.35832605
+      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
